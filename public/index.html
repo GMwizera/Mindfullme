@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindfulMe - Advanced Mental Wellness Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 MindfulMe</h1>
+            <p>Advanced Mental Wellness Dashboard with AI-Powered Insights</p>
+            <div class="feature-highlights">
+                <div class="feature-badge">🔗 3 External APIs</div>
+                <div class="feature-badge">🧠 AI Mood Analysis</div>
+                <div class="feature-badge">📊 Data Visualization</div>
+                <div class="feature-badge">🔍 Advanced Search</div>
+                <div class="feature-badge">🎯 Personalized Content</div>
+            </div>
+            <div class="api-status">
+                <div class="status-indicator">
+                    <div class="status-dot loading" id="quotesStatus"></div>
+                    <span>Quotable API</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot loading" id="weatherStatus"></div>
+                    <span>OpenWeather API</span>
+                </div>
+                <div class="status-indicator">
+                    <div class="status-dot loading" id="newsStatus"></div>
+                    <span>NewsAPI</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Controls Section -->
+        <div class="controls-section">
+            <div class="search-container">
+                <div class="search-icon">🔍</div>
+                <input type="text" class="search-input" id="globalSearch" 
+                       placeholder="Search quotes, news, or mood insights..." 
+                       onkeyup="performGlobalSearch(event)">
+            </div>
+            <div class="sort-controls">
+                <label for="sortBy">Sort by:</label>
+                <select class="sort-select" id="sortBy" onchange="applySorting()">
+                    <option value="relevance">Relevance</option>
+                    <option value="date">Date</option>
+                    <option value="alphabetical">A-Z</option>
+                    <option value="mood-correlation">Mood Match</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Enhanced Mood Tracker -->
+        <div class="card mood-tracker">
+            <h3>💭 Advanced Mood Analytics</h3>
+            <p>Track your emotional wellness with AI-powered insights and personalized recommendations.</p>
+            <div class="mood-buttons">
+                <button class="mood-btn" onclick="selectMood('😄', 'amazing', 5)">😄 Amazing</button>
+                <button class="mood-btn" onclick="selectMood('😊', 'good', 4)">😊 Good</button>
+                <button class="mood-btn" onclick="selectMood('😐', 'okay', 3)">😐 Okay</button>
+                <button class="mood-btn" onclick="selectMood('😔', 'down', 2)">😔 Down</button>
+                <button class="mood-btn" onclick="selectMood('😰', 'anxious', 1)">😰 Anxious</button>
+            </div>
+            
+            <div class="stats-grid" id="moodStats">
+                <div class="stat-item">
+                    <div class="stat-value" id="avgMood">--</div>
+                    <div class="stat-label">Avg Mood</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="moodStreak">--</div>
+                    <div class="stat-label">Day Streak</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="totalEntries">--</div>
+                    <div class="stat-label">Total Entries</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="moodTrend">--</div>
+                    <div class="stat-label">Trend</div>
+                </div>
+            </div>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="wellnessProgress" style="width: 0%"></div>
+            </div>
+            <div style="text-align: center; margin-top: 0.5rem; color: #666;">
+                Wellness Progress: <span id="wellnessPercentage">0%</span>
+            </div>
+            
+            <div id="moodInsight"></div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Enhanced Inspirational Quotes -->
+            <div class="card">
+                <h3>✨ Personalized Inspiration</h3>
+                <div class="filters">
+                    <button class="filter-btn active" onclick="filterQuotes('all')">All</button>
+                    <button class="filter-btn" onclick="filterQuotes('motivational')">Motivational</button>
+                    <button class="filter-btn" onclick="filterQuotes('wisdom')">Wisdom</button>
+                    <button class="filter-btn" onclick="filterQuotes('inspirational')">Inspirational</button>
+                    <button class="filter-btn" onclick="filterQuotes('mood-match')">Mood Match</button>
+                </div>
+                <div id="quoteContent">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Loading personalized quotes from Quotable API...
+                    </div>
+                </div>
+                <button class="btn" onclick="getNewQuote()" id="newQuoteBtn">
+                    🔄 Get New Quote
+                </button>
+                <div class="api-source" id="quoteSource">Powered by Quotable API</div>
+            </div>
+
+            <!-- Enhanced Weather & Mood -->
+            <div class="card">
+                <h3>🌤️ Weather & Mood Intelligence</h3>
+                <div id="weatherContent">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Analyzing weather impact on mood...
+                    </div>
+                </div>
+                <button class="btn" onclick="getWeatherInsights()" id="weatherBtn">
+                    📍 Update Weather Analysis
+                </button>
+                <div class="api-source" id="weatherSource">Powered by OpenWeatherMap API</div>
+            </div>
+
+            <!-- Enhanced Mental Health News -->
+            <div class="card">
+                <h3>📰 Curated Mental Health Insights</h3>
+                <div class="filters">
+                    <button class="filter-btn active" onclick="filterNews('mental health')">Mental Health</button>
+                    <button class="filter-btn" onclick="filterNews('wellness')">Wellness</button>
+                    <button class="filter-btn" onclick="filterNews('mindfulness')">Mindfulness</button>
+                    <button class="filter-btn" onclick="filterNews('psychology')">Psychology</button>
+                </div>
+                <div id="newsContent">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Curating latest mental health insights...
+                    </div>
+                </div>
+                <button class="btn" onclick="refreshNews()" id="newsBtn">
+                    🔄 Refresh Insights
+                </button>
+                <div class="api-source" id="newsSource">Powered by NewsAPI</div>
+            </div>
+
+            <!-- Crisis Resources -->
+            <div class="card">
+                <h3>🆘 Crisis Support Network</h3>
+                <div class="error-message">
+                    <strong>Emergency:</strong> If you're in immediate danger, call 911 or your local emergency services
+                </div>
+                <div class="data-grid" id="crisisResources">
+                    <div class="data-item">
+                        <div class="data-title">National Suicide Prevention Lifeline</div>
+                        <div class="data-meta">
+                            <span>📞 988</span>
+                            <span>24/7 Available</span>
+                        </div>
+                        <div class="data-description">Free and confidential emotional support for people in suicidal crisis or emotional distress.</div>
+                        <div class="data-tags">
+                            <div class="data-tag">Crisis Support</div>
+                            <div class="data-tag">24/7</div>
+                        </div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-title">Crisis Text Line</div>
+                        <div class="data-meta">
+                            <span>💬 Text HOME to 741741</span>
+                            <span>24/7 Available</span>
+                        </div>
+                        <div class="data-description">Free, 24/7 crisis support via text message for anyone in crisis.</div>
+                        <div class="data-tags">
+                            <div class="data-tag">Text Support</div>
+                            <div class="data-tag">Anonymous</div>
+                        </div>
+                    </div>
+                    <div class="data-item">
+                        <div class="data-title">SAMHSA National Helpline</div>
+                        <div class="data-meta">
+                            <span>📞 1-800-662-4357</span>
+                            <span>24/7 Available</span>
+                        </div>
+                        <div class="data-description">Treatment referral and information service for mental health and substance abuse.</div>
+                        <div class="data-tags">
+                            <div class="data-tag">Treatment Info</div>
+                            <div class="data-tag">Referrals</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn" onclick="findLocalResources()">🔍 Find Local Resources</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>
+                <strong>🔗 External API Integrations:</strong><br>
+                <a href="https://api.quotable.io" target="_blank">Quotable API</a> • 
+                <a href="https://openweathermap.org/api" target="_blank">OpenWeatherMap API</a> • 
+                <a href="https://newsapi.org" target="_blank">NewsAPI</a>
+                <br><br>
+                <strong>MindfulMe</strong> - Advanced Mental Wellness Dashboard<br>
+                Demonstrating professional external API integration, advanced user interactions,<br>
+                intelligent data filtering, and comprehensive mental health support.
+                <br><br>
+                <small>© 2025 - Built for COMP3123 Assignment | Mental Health Awareness & Technology</small>
+            </p>
+        </div>
+    </div>
+
+    <div id="notificationContainer"></div>
+
+   <script src="script.js"></script>
+</body>
+</html>
