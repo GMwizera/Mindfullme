@@ -1,14 +1,14 @@
 # Simple, working Dockerfile for MindfulMe
 FROM node:18-alpine
 
-# Set working directory
+
 WORKDIR /app
 
-# Create non-root user for security
+
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S mindfulme -u 1001 -G nodejs
 
-# Copy package files first for better caching
+
 COPY package*.json ./
 
 # Install dependencies

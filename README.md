@@ -311,26 +311,6 @@ curl http://your-load-balancer:8404/haproxy-stats
 - **Crisis Text Line**: Text HOME to 741741 - [https://www.crisistextline.org/](https://www.crisistextline.org/)
 - **SAMHSA National Helpline**: 1-800-662-4357 - [https://www.samhsa.gov/find-help/national-helpline](https://www.samhsa.gov/find-help/national-helpline)
 
----
-
-## 📞 **Support & Contact Information**
-
-### **Repository Information**
-- **GitHub Repository**: [https://github.com/GMwizera/mindfulme](https://github.com/GMwizera/mindfulme)
-- **Docker Hub**: [https://hub.docker.com/r/GMwizera/mindfulme-wellness-dashboard](https://hub.docker.com/r/GMwizera/mindfulme)
-- **Issues & Bug Reports**: [GitHub Issues](https://github.com/GMwizera/mindfulme/issues)
-- **Feature Requests**: [GitHub Discussions](https://github.com/GMwizera/mindfulme/discussions)
-
-### **Developer Contact**
-- **Name**: Mwizera Amen Gisele
-- **Email**: g.mwizera@alustudent.com
-
-
-### **Academic Context**
-- **Course**: COMP3123 - Full Stack Development
-- **Institution**: Your University Name
-- **Semester**: Current Academic Term
-- **Assignment**: API Integration & Deployment Project
 
 ---
 
@@ -350,13 +330,6 @@ All external APIs are used in accordance with their respective terms of service 
 
 ### **Medical Disclaimer**
 This application is designed for educational and informational purposes. It is not a substitute for professional mental health care, medical advice, diagnosis, or treatment. If you are experiencing a mental health crisis, please contact emergency services or speak with a qualified mental health professional immediately.
-
-### **Crisis Resources**
-- **Emergency Services**: 911 (US) or your local emergency number
-- **National Suicide Prevention Lifeline**: 988
-- **Crisis Text Line**: Text HOME to 741741
-- **International Association for Suicide Prevention**: [https://www.iasp.info/resources/Crisis_Centres/](https://www.iasp.info/resources/Crisis_Centres/)
-
 ---
 
 - **Microservices Architecture**: Service decomposition for enhanced scalability
