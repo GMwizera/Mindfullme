@@ -173,6 +173,9 @@ npm start
 📚 API Documentation: http://localhost:8080/api
 ```
 
+6. **Video demor**
+Find the video demo by playing file [video-demo.mov](https://drive.google.com/file/d/1V-cN5WECdI9udMKwlBzYX4l3Ksw7UvOB/view?usp=sharing)
+```
 ### **🔑 External API Setup (Optional but Recommended)**
 
 #### **OpenWeatherMap API** (Free Tier)
