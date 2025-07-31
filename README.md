@@ -139,7 +139,7 @@ Git (for version control)
 
 1. **Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/mindfulme-wellness-dashboard.git
+git clone https://github.com/GMwizera/mindfulme-wellness-dashboard.git
 cd mindfulme-wellness-dashboard
 ```
 
