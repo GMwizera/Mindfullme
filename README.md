@@ -1,4 +1,6 @@
 # MindfulMe - Advanced Mental Wellness Dashboard 🌱
+- **Deployment URL**: [Visit app](https://mindfullme-azure.vercel.app/)
+
 
 **A comprehensive, AI-powered mental wellness dashboard that integrates multiple external APIs to provide personalized mental health support, mood analytics, and evidence-based wellness recommendations.**
 
